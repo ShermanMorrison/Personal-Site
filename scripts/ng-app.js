@@ -1,3 +1,6 @@
+(function()
+{
+
 var app = angular.module('App', ['ngRoute']);
 
 app.config(function($routeProvider, $controllerProvider, $compileProvider, $filterProvider, $provide) {
@@ -5,8 +8,12 @@ app.config(function($routeProvider, $controllerProvider, $compileProvider, $filt
 
     app.controllerProvider  = $controllerProvider;
     app.compileProvider     = $compileProvider;
+    app.routeProvider       = $routeProvider;
     app.filterProvider      = $filterProvider;
     app.provide             = $provide;
+
+
+
 
     $routeProvider
     .when('/', {
@@ -15,13 +22,14 @@ app.config(function($routeProvider, $controllerProvider, $compileProvider, $filt
     })
     .when('/cube', {
         templateUrl: '/rubiks-cube/',
+        controller: 'CubeCtrl',
         resolve:{deps:function($q, $rootScope) {
             var deferred = $q.defer();
             var deps1 =
             [
                 "/rubiks-cube/scripts/three.min.js",
                 "/rubiks-cube/scripts/Queue.src.js",
-                "/rubiks-cube/scripts/bootstrap.min.js",
+                "/rubiks-cube/scripts/bootstrap.min.js"
             ];
 
             var deps2 =
@@ -34,6 +42,7 @@ app.config(function($routeProvider, $controllerProvider, $compileProvider, $filt
             $script(deps1, function() {
                 $script(deps2, function() {
                     $rootScope.$apply(function() {
+                        console.log("Start applying digest cycle");
                         deferred.resolve();
                     });
                 })
@@ -46,3 +55,5 @@ app.config(function($routeProvider, $controllerProvider, $compileProvider, $filt
         redirectTo: '/',
     });
 })
+
+})();
