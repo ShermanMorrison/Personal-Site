@@ -3,16 +3,8 @@
 
 var app = angular.module('App', ['ngRoute']);
 
-app.config(function($routeProvider, $controllerProvider, $compileProvider, $filterProvider, $provide) {
+app.config(function($routeProvider) {
     'use strict';
-
-    app.controllerProvider  = $controllerProvider;
-    app.compileProvider     = $compileProvider;
-    app.routeProvider       = $routeProvider;
-    app.filterProvider      = $filterProvider;
-    app.provide             = $provide;
-
-
 
 
     $routeProvider
@@ -42,7 +34,6 @@ app.config(function($routeProvider, $controllerProvider, $compileProvider, $filt
             $script(deps1, function() {
                 $script(deps2, function() {
                     $rootScope.$apply(function() {
-                        console.log("Start applying digest cycle");
                         deferred.resolve();
                     });
                 })

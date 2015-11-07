@@ -4,4 +4,5 @@ angular.module('App')
             'use strict';
             console.log("main.js loaded");
         }
+
     )
