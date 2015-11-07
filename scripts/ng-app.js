@@ -13,22 +13,20 @@ app.config(function($routeProvider) {
         controller: 'MainCtrl',
     })
     .when('/cube', {
-        templateUrl: '/rubiks-cube/',
+        templateUrl: 'cube.html',
         controller: 'CubeCtrl',
         resolve:{deps:function($q, $rootScope) {
             var deferred = $q.defer();
             var deps1 =
             [
-                "/rubiks-cube/scripts/three.min.js",
-                "/rubiks-cube/scripts/Queue.src.js",
-                "/rubiks-cube/scripts/bootstrap.min.js"
+                "lib/three.min.js",
+                "lib/Queue.src.js",
+                "lib/bootstrap.min.js"
             ];
 
             var deps2 =
             [
-                "/rubiks-cube/scripts/index.js",
-                "/rubiks-cube/scripts/bootstrap-number-input.js",
-                "/rubiks-cube/scripts/cubeGUI-ng-module.js"
+                "scripts/cube.js",
             ]
 
             $script(deps1, function() {

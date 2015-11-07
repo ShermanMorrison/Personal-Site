@@ -18,7 +18,6 @@ angular.module('App')
                 }
             }
             $scope.$on("$destroy", function(){
-                console.log("Destroying this template");
                 clear_scene();
                 var gl = $("canvas")[0].getContext("webgl");
                 gl.clearColor(1, 1, 1, 1);

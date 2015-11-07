@@ -1,19 +1,75 @@
-<html>
-    <head>
+<html lang="en">
 
-        <title>Jonathan Wilson</title>
+<head>
 
-    </head>
-    <body>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Jonathan Wilson</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        Jonathan Wilson
+                    </a>
+                </li>
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                <li>
+                    <a href="#/cube">Cube</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+
+        </div>
+        <!-- /#page-content-wrapper -->
 
         <div ng-view></div>
 
-        <script src="lib/jquery-2.1.4.min.js"></script>
-        <script src="lib/angular-v1.2.22.js"></script>
-        <script src="lib/angular-route-v1.2.22.js"></script>
-        <script src="scripts/script.js"></script>
-        <script src="scripts/appBootstrap.js"></script>
-    </body>
+    </div>
+
+
+    <!--Jquery-->
+    <script src="lib/jquery-2.1.4.min.js"></script>
+    <!--Angular and Angular-Route-->
+    <script src="lib/angular-v1.2.22.js"></script>
+    <script src="lib/angular-route-v1.2.22.js"></script>
+    <!--$script.js loader-->
+    <script src="lib/script.js"></script>
+    <!--Compile the angular module-->
+    <script src="scripts/appBootstrap.js"></script>
+
+</body>
+
 </html>
 
 
