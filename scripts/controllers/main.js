@@ -3,6 +3,7 @@ angular.module('App')
         function MainCtrl ($scope) {
             'use strict';
             console.log("main.js loaded");
+            $("canvas").remove();
         }
 
     )

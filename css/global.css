@@ -71,7 +71,7 @@ body {
   float: left;
   position: relative;
   width: 250px;
-  height: 100px;
+  height: 100%;
 }
 
 #child2 {

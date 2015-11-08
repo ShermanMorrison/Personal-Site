@@ -2,6 +2,14 @@ angular.module('App')
     .controller('CubeCtrl',
         function CubeCtrl ($scope) {
             'use strict';
+
+            var head= document.getElementsByTagName('head')[0];
+            var script= document.createElement('script');
+            script.type= 'text/javascript';
+            script.src= 'scripts/cube.js';
+            head.appendChild(script);
+
+
             $scope.scramble = function(){ call_scramble(); };
             $scope.reset = function(){ call_reset(); };
             $scope.dimension = 3;
@@ -17,12 +25,6 @@ angular.module('App')
                     call_reset($scope.dimension);
                 }
             }
-            $scope.$on("$destroy", function(){
-                clear_scene();
-                var gl = $("canvas")[0].getContext("webgl");
-                gl.clearColor(1, 1, 1, 1);
-                gl.clear(gl.COLOR_BUFFER_BIT);
-            });
         }
     )
 

@@ -24,17 +24,10 @@ app.config(function($routeProvider) {
                 "lib/bootstrap.min.js"
             ];
 
-            var deps2 =
-            [
-                "scripts/cube.js",
-            ]
-
             $script(deps1, function() {
-                $script(deps2, function() {
                     $rootScope.$apply(function() {
                         deferred.resolve();
                     });
-                })
             });
 
             return deferred.promise;
