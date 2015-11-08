@@ -53,3 +53,15 @@ input[readonly] {
   padding-left: 35px;
   padding-right: 35px;
 }
+
+#wrapper {
+  position:relative;
+}
+
+#main-container {
+  width:800px;
+  height:600px;
+  position: absolute;
+
+  margin:auto;
+}
