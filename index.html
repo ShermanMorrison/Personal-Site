@@ -28,32 +28,38 @@
 
 <body>
 
-    <div id="wrapper">
+    <div id="my-wrapper">
 
-        <!-- Sidebar -->
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                    <a href="#">
-                        Jonathan Wilson
-                    </a>
-                </li>
-                <li>
-                    <a href="/">Home</a>
-                </li>
-                <li>
-                    <a href="#/cube">Cube</a>
-                </li>
-            </ul>
-        </div>
-        <!-- /#sidebar-wrapper -->
-
-        <!-- Page Content -->
-        <div id="main-container">
-            <div ng-view></div>
+        <div id="child1">
+            <div id="sidebar-wrapper">
+                <ul class="sidebar-nav">
+                    <li class="sidebar-brand">
+                        <a href="#">
+                            Jonathan Wilson
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    <li>
+                        <a href="#/cube">Cube</a>
+                    </li>
+                </ul>
+            </div>
         </div>
 
-        <!-- /#page-content-wrapper -->
+        <div id="child2">
+            <!-- Page Content -->
+            <div id="main-container">
+                <div ng-view></div>
+            </div>
+            <!--<div class="static-q">-->
+                <!--asfd-->
+            <!--</div>-->
+            <!--<div class="static-q">-->
+                <!--gggg-->
+            <!--</div>-->
+        </div>
 
 
     </div>
