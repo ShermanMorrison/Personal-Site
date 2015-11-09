@@ -11,7 +11,7 @@ angular.module('App')
 
 
             $scope.scramble = function(){ call_scramble(); };
-            $scope.reset = function(){ call_reset(); };
+            $scope.reset = function(){ call_reset($scope.dimension); };
             $scope.dimension = 3;
             $scope.increment = function(){
                 if ($scope.dimension < 7){

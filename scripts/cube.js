@@ -10,17 +10,6 @@ parent.appendChild( renderer.domElement );
 
 
 
-//controls = new THREE.OrbitControls (camera, renderer.domElement);
-//var webglEl = document.getElementById('webgl');
-//webglEl.appendChild(renderer.domElement);
-
-
-camera.position.z = 10;
-camera.position.x = 10;
-camera.position.y = 7;
-
-camera.rotation.y = Math.PI/4;
-
 
 var rad = Math.PI/ 180;
 
@@ -49,7 +38,7 @@ var render = function () {
 ** Class for individual cubes within the Rubik's Cube.
 ** Contains methods to manipulate cube and add it to scene.
 */
-function Cube (x, y, z, offset) {
+function Cube(x, y, z, offset, xColor, yColor, zColor) {
 
     var geometry = new THREE.BoxGeometry( 1, 1, 1 );
     var material1 = new THREE.MeshBasicMaterial( { color: 0xffffff, vertexColors: THREE.FaceColors} );
@@ -60,17 +49,17 @@ function Cube (x, y, z, offset) {
     geometry.faces[0].color.setHex(0xff0000);
     geometry.faces[1].color.setHex(0xff0000);
 
-    geometry.faces[2].color.setHex(0x0000ff);
-    geometry.faces[3].color.setHex(0x0000ff);
+    geometry.faces[2].color.setHex(0xff7f00);
+    geometry.faces[3].color.setHex(0xff7f00);
 
     geometry.faces[4].color.setHex(0x00ff00);
     geometry.faces[5].color.setHex(0x00ff00);
 
-    geometry.faces[6].color.setHex(0xffff00);
-    geometry.faces[7].color.setHex(0xffff00);
+    geometry.faces[6].color.setHex(0x0000ff);
+    geometry.faces[7].color.setHex(0x0000ff);
 
-    geometry.faces[8].color.setHex(0xff7f00);
-    geometry.faces[9].color.setHex(0xff7f00);
+    geometry.faces[8].color.setHex(0xffff00);
+    geometry.faces[9].color.setHex(0xffff00);
 
     geometry.faces[10].color.setHex(0xffffff);
     geometry.faces[11].color.setHex(0xffffff);
@@ -90,6 +79,9 @@ function Cube (x, y, z, offset) {
     this.orig_x = x + offset;
     this.orig_y = y + offset;
     this.orig_z = z + offset;
+
+    this.faceColors = [xColor, yColor, zColor];
+
 }
 
 Cube.prototype.add_to_scene = function() {
@@ -155,6 +147,11 @@ function BigCube(dim) {
 
     this.queue = new Queue();
 
+    var faceColors = this.faceColors = {"x":{0:"orange", 1:null, 2:"red"},
+                                        "y":{0:"blue", 1:null, 2:"green"},
+                                         "z":{0:"white", 1:null, 2:"yellow"}
+    };
+
     this.make_cube = function(dim){
         cube = [];
         for (var x=0; x<dim; x++){
@@ -162,13 +159,21 @@ function BigCube(dim) {
             for (var y=0; y<dim; y++){
                 cube[x].push([]);
                 for (var z=0; z<dim; z++){
-                    cube[x][y].push(new Cube(x - (this.dim/2 - 0.5), y - (this.dim/2 - 0.5), z - (this.dim/2 - 0.5), this.dim/2 - 0.5));
+                    var offset = this.dim/2 - 0.5;
+                    var xp = x - offset;
+                    var yp = y - offset;
+                    var zp = z - offset;
+                    var xColor = faceColors.x[x];
+                    var yColor = faceColors.y[y];
+                    var zColor = faceColors.z[z];
+                    cube[x][y].push(new Cube(xp, yp, zp, offset, xColor, yColor, zColor));
                 }
             }
         }
         return cube;
     }
 
+    // remove this- make layer on the fly during rotate-animate
     this.make_layers = function(dim){
         layers = [];
         for (var i=0; i<3; i++){
@@ -191,6 +196,7 @@ function BigCube(dim) {
         }
         return layers;
     }
+
 
     this.cube = this.make_cube(dim);
     this.layers = this.make_layers(dim);
@@ -310,12 +316,35 @@ BigCube.prototype.update_cube_state = function(xyz, index, ccw) {
     this.update_layers(xyz, index, ccw);
 }
 
+BigCube.prototype.swapColors = function(x, y, z, rotAxis) {
+
+    var cube = this.cube[x][y][z];
+
+    // swapAxes = the two axes to swap
+    var swapAxes = [];
+    for (axis in cube.faceColors) {
+        axis = parseInt(axis);
+        if (axis != rotAxis){
+            swapAxes.push(axis);
+        }
+    }
+
+    var temp = cube.faceColors[swapAxes[0]];
+    cube.faceColors[swapAxes[0]] = cube.faceColors[swapAxes[1]]
+    cube.faceColors[swapAxes[1]] = temp;
+
+}
+
+
 BigCube.prototype.update_cube = function(xyz, index, ccw, lower_lims, upper_lims) {
     var cube_copy = this.copy_cube();
 
     for (var x=lower_lims[0]; x<upper_lims[0]; x++){
         for (var y=lower_lims[1]; y<upper_lims[1]; y++){
             for (var z=lower_lims[2]; z<upper_lims[2]; z++){
+                // swap colors for cubes in layer
+//                this.swapColors(x, y, z, xyz);
+                // update the cube state
                 if (ccw){
                     switch (xyz) {
                         case 0:
@@ -323,6 +352,7 @@ BigCube.prototype.update_cube = function(xyz, index, ccw, lower_lims, upper_lims
                             break;
                         case 1:
                             this.cube[x][y][z] = cube_copy[(this.dim-1)-z][y][x];
+                            var temp = this.
                             break;
                         case 2:
                             this.cube[x][y][z] = cube_copy[y][(this.dim-1)-x][z];
@@ -388,12 +418,15 @@ BigCube.prototype.get_is_solved = function(){
 
 BigCube.prototype.check_if_solved = function() {
 
+    console.log("Cube[0][2][1] has y color:" + this.cube[0][2][1].faceColors[1]);
+
     var is_solved = false;
-    if (this.check_if_solved){
-        this.get_is_solved();
+    if (this.is_checking_solved){
+        is_solved = this.get_is_solved();
     };
 
     if (is_solved){
+        this.is_checking_solved = false;
         setTimeout(function() {alert("You solved the cube! Good job!"); }, 50);
     }
 
@@ -437,20 +470,21 @@ function scramble(myCube) {
 
 
 // Returns new, reset cube
-function reset(myCube, dim) {
+function reset(dim) {
 
     // clear previous cube from scene
     clear_scene();
 
-
-
     // create new cube in the scene
-    var dim = dim != null ? dim : myCube.dim;
+    var dim = dim;
     var newBigCube = new BigCube(dim);
 
-    camera.position.z =  3*dim;
-    camera.position.x =  3*dim;
-    camera.position.y =  2*dim;
+    newBigCube.is_checking_solved = true;
+
+    camera.position.z = 1.5*dim;
+    camera.position.x = 1.5*dim;
+    camera.position.y = 1*dim;
+    camera.lookAt(new THREE.Vector3(0,0,0));
 
     return newBigCube;
 }
@@ -480,34 +514,23 @@ function rotateZ(layer){
     rotate(2, layer, true);
 }
 
-var bigCube = new BigCube(3);
+
+
+
 
 function call_scramble() {
     bigCube = scramble(bigCube);
 }
 
 function call_reset(dim) {
-    bigCube = reset(bigCube, dim);
+    bigCube = reset(dim);
 }
 
+call_reset(3);
 
-camera.position.z = 3*bigCube.dim;
-camera.position.x = 3*bigCube.dim;
-camera.position.y = 2*bigCube.dim;
 
 render();
 
-
-//rotate(1,2,false);
-//rotateY(2);
-//
-//$("#btn_scramble").click(function(){
-//    call_scramble();
-//});
-//
-//$("#btn_reset").click(function(){
-//    call_reset();
-//});
 
 document.onkeypress = function(e){
     e = e || window.event;
