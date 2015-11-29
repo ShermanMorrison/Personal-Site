@@ -5,5 +5,4 @@ angular.module('App')
             console.log("main.js loaded");
             $("canvas").remove();
         }
-
-    )
+    );
