@@ -33,6 +33,10 @@ app.config(function($routeProvider) {
             return deferred.promise;
         }}
     })
+    .when('/bike', {
+        templateUrl: 'bike.html',
+        controller: 'MainCtrl',
+    })
     .otherwise({
         redirectTo: '/',
     });
