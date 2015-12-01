@@ -104,3 +104,30 @@ body {
     top: 0px;
   }
 }
+
+.left {
+    float: left;
+}
+
+#main-container figure {
+    margin: 0px -200px;
+}
+
+#main-container figure img{
+    width: 667px;
+}
+
+#main-container figcaption {
+    width: 667px;
+    text-align: center;
+}
+
+#main-container .right {
+    float: right;
+}
+
+#imgList {
+    left: calc(100% - 600px);
+    height: 600px;
+    margin: 0px;
+}
