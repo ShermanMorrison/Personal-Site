@@ -1,3 +1,6 @@
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
 <h1>
     <style>
         body {overflow-y:auto}
@@ -10,50 +13,121 @@
         <span class="wpsr_floatbts_anchor" data-offset="-750"></span>
         <p>Designed for mobile and powered by Django, the Rice Bikes app is a business-management web app created for the Rice University Bike Shop. I was the lead developer on a team of Rice Apps, an organization centered around improving student life through technology.</p>
         <p>The need for the app came after the Shop saw a rapid growth in customer base upon changing locations in Fall 2014. Their clunky Google Drive-based system was holding them back. I designed the app to eliminate the inefficiencies of that system, focusing on the areas of task management, inventory management, and finance management. In its first semester of use, the Shop used the app to process over 600 transactions.</p>
-        <h3>Task Management</h3>
 
-        <div id="imgList">
-            <div>
-                <img src="/img/Final0.png" alt="Home Page">
-                <span>Home Page showing Active Customers</span>
+        <div class="contentRow">
+            <div id="left-area">
+                <h3>Task Management</h3>
+                <p class="left">The biggest impact of the app has been on task management. The app is used by mechanics while on the job, so it was crucial to make everything easily accessible in-app. This was the advantage over the old solution using Google Forms + Sheets, or the possibility of integrating other existing management apps, such as Asana + Wufoo. The app solved the problem of task management, while allowing admin users to modify the menu of available services and products.</p>
+
+                <h3>Inventory Management</h3>
+                <p>The app provides key functionality to integrate inventory management with task management. Mechanics can make order requests for inventory managers to handle. Inventory managers can manage the inventory of in-house refurbished bikes, and view the labor and costs that went into each bike.</p>
+
+
+
+                <h3>Finance Management</h3>
+                <p>The app improves the Shop’s insight into their sales. Google Sheets is limited to storing each transaction as a row in a spreadsheet. Extending beyond this, the app’s relational database models allows the Shop to view revenue information by category, so they can see where profits are really coming from.</p>
             </div>
-            <div>
-                <img src="/img/Final2.png" alt="Home Page">
-                <span>Home Page showing Active Customers</span>
+
+            <div id="right-area">
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                    <li data-target="#myCarousel" data-slide-to="3"></li>
+                    <li data-target="#myCarousel" data-slide-to="4"></li>
+                    </ol>
+
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+                        <img src="/img/Image0.png" alt="Home Page">
+                    </div>
+
+                    <div class="item">
+                        <img src="/img/Image2.png" alt="Home Page">
+                    </div>
+
+                    <div class="item">
+                        <img src="/img/Image3.png" alt="Home Page">
+                    </div>
+
+                    <div class="item">
+                        <img src="/img/Image4.png" alt="Home Page">
+                    </div>
+
+                    <div class="item">
+                        <img src="/img/Image5.png" alt="Home Page">
+                    </div>
+                </div>
+
+                      <!-- Left and right controls -->
+                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+                </a>
+                <!--<div id="imgList">-->
+                    <!--<div>-->
+                        <!--<img src="/img/Final0.png" alt="Home Page">-->
+                        <!--<span>Home Page showing Active Customers</span>-->
+                    <!--</div>-->
+                    <!--<div>-->
+                        <!--<img src="/img/Final2.png" alt="Home Page">-->
+                        <!--<span>Home Page showing Active Customers</span>-->
+                    <!--</div>-->
+                    <!--<div>-->
+                        <!--<img src="/img/Final3.png" alt="Home Page">-->
+                        <!--<span>Home Page showing Active Customers</span>-->
+                    <!--</div>-->
+                    <!--<div>-->
+                        <!--<img src="/img/Final4.png" alt="Home Page">-->
+                        <!--<span>Home Page showing Active Customers</span>-->
+                    <!--</div>-->
+                    <!--<div>-->
+                        <!--<img src="/img/Final5.png" alt="Home Page">-->
+                        <!--<span>Home Page showing Active Customers</span>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                    <!-- Left and right controls -->
+                    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                    </a>
+                    </div>
+
+                    <div id="carouselButtons">
+                        <button id="playButton" type="button" class="btn btn-default btn-xs">
+                            <span class="glyphicon glyphicon-play"></span>
+                         </button>
+                        <button id="pauseButton" type="button" class="btn btn-default btn-xs">
+                            <span class="glyphicon glyphicon-pause"></span>
+                        </button>
+                    </div>
             </div>
-            <div>
-                <img src="/img/Final3.png" alt="Home Page">
-                <span>Home Page showing Active Customers</span>
-            </div>
-            <div>
-                <img src="/img/Final4.png" alt="Home Page">
-                <span>Home Page showing Active Customers</span>
-            </div>
-            <div>
-                <img src="/img/Final5.png" alt="Home Page">
-                <span>Home Page showing Active Customers</span>
-            </div>
+
         </div>
-
-
-        <p class="left">The biggest impact of the app has been on task management. The app is used by mechanics while on the job, so it was crucial to make everything easily accessible in-app. This was the advantage over the old solution using Google Forms + Sheets, or the possibility of integrating other existing management apps, such as Asana + Wufoo. The app solved the problem of task management, while allowing admin users to modify the menu of available services and products.</p>
-
-        <h3>Inventory Management</h3>
-        <p>The app provides key functionality to integrate inventory management with task management. Mechanics can make order requests for inventory managers to handle. Inventory managers can manage the inventory of in-house refurbished bikes, and view the labor and costs that went into each bike.</p>
-
-
-
-        <h3>Finance Management</h3>
-        <p>The app improves the Shop’s insight into their sales. Google Sheets is limited to storing each transaction as a row in a spreadsheet. Extending beyond this, the app’s relational database models allows the Shop to view revenue information by category, so they can see where profits are really coming from.</p>
-
 
 
     </div>
 
-    <script>
-        $('#imgList').slick({
-            arrows: true,
-        });
-    </script>
 </h5>
 
+<script>
+    $('#playButton').click(function () {
+    $('#myCarousel').carousel('cycle');
+});
+$('#pauseButton').click(function () {
+    $('#myCarousel').carousel('pause');
+});
+
+</script>

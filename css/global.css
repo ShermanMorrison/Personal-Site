@@ -126,8 +126,32 @@ body {
     float: right;
 }
 
-#imgList {
-    left: calc(100% - 600px);
-    height: 600px;
-    margin: 0px;
+#left-area {
+    width: calc(100% - 300px);
+    float: left;
+    margin-right: -200px;
+    position:absolute;
+    padding-right: 10px;
+}
+
+#right-area{
+    left: calc(100% - 300px);
+    position: absolute;
+}
+
+p {
+    line-height:120%;
+}
+
+#carouselButtons {
+    position: absolute;
+    top: -1px;
+}
+
+#myCarousel {
+    padding: 0px 40px;
+}
+
+#carouselButtons .glyphicon {
+    top: 0px;
 }
