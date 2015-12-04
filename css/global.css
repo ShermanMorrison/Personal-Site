@@ -104,3 +104,54 @@ body {
     top: 0px;
   }
 }
+
+.left {
+    float: left;
+}
+
+#main-container figure {
+    margin: 0px -200px;
+}
+
+#main-container figure img{
+    width: 667px;
+}
+
+#main-container figcaption {
+    width: 667px;
+    text-align: center;
+}
+
+#main-container .right {
+    float: right;
+}
+
+#left-area {
+    width: calc(100% - 300px);
+    float: left;
+    margin-right: -200px;
+    position:absolute;
+    padding-right: 10px;
+}
+
+#right-area{
+    left: calc(100% - 300px);
+    position: absolute;
+}
+
+p {
+    line-height:120%;
+}
+
+#carouselButtons {
+    position: absolute;
+    top: -1px;
+}
+
+#myCarousel {
+    padding: 0px 40px;
+}
+
+#carouselButtons .glyphicon {
+    top: 0px;
+}
