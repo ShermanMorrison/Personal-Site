@@ -3,12 +3,9 @@ body
   height: 400px;
   position: relative;
   width: 400px;
+  margin: 0px;
 }
-canvas
-{
-  height: 100%;
-  width: 100%;
-}
+
 
 .btn-vert-block {
   margin-top: 10px;
@@ -83,15 +80,6 @@ body {
   width: calc(100% - 250px);
 }
 
-#main-container {
-  width:800px;
-  height:600px;
-
-  position: relative;
-  left: calc(50% - 400px);
-  top: calc(50% - 300px);
-
-}
 
 @media(max-width:1050px) {
   #main-container {
@@ -109,22 +97,6 @@ body {
     float: left;
 }
 
-#main-container figure {
-    margin: 0px -200px;
-}
-
-#main-container figure img{
-    width: 667px;
-}
-
-#main-container figcaption {
-    width: 667px;
-    text-align: center;
-}
-
-#main-container .right {
-    float: right;
-}
 
 #left-area {
     width: calc(100% - 300px);
@@ -136,15 +108,17 @@ body {
 
 #right-area{
     left: calc(100% - 300px);
-    position: absolute;
+    float: right;
 }
 
-p {
-    line-height:120%;
+
+#my-wrapper  {
+    line-height:4em;
+    font-family: Open Sans, Arial, Sans Serif;
+    font-weight: 300;
 }
 
 #carouselButtons {
-    position: absolute;
     top: -1px;
 }
 
@@ -154,4 +128,45 @@ p {
 
 #carouselButtons .glyphicon {
     top: 0px;
+}
+
+.navbar {
+    display: none;
+}
+
+
+#cube-container {
+    height: 600px;
+    width: 800px;
+}
+
+canvas {
+    height: 100%;
+    width: 100%;
+}
+
+#big-main-container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    padding: 100px;
+}
+
+#main-container {
+    height: 100%;
+}
+
+
+@media (max-width: 600px){
+    .navbar {
+        display: block;
+    }
+
+    #child1 {
+        display: none;
+    }
+
+    #child2 {
+        width: 100%;
+    }
 }
