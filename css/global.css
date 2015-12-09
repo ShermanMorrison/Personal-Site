@@ -4,6 +4,7 @@ body
   position: relative;
   width: 400px;
   margin: 0px;
+  background-color:#C6E4FF
 }
 
 
@@ -152,7 +153,6 @@ canvas {
     height: 100%;
     width: 100%;
     padding: 50px 100px 100px 100px;
-    background-color:#C6E4FF
 }
 
 #main-container {
@@ -162,12 +162,12 @@ canvas {
 }
 
 
-#github-banner {
+#github-banner img {
     z-index: 100;
 }
 
 .navbar {
-    z-index: 0;
+    z-index: 1;
 }
 
 .navbar-toggle {
@@ -195,7 +195,6 @@ canvas {
     #child1 {
         display: none;
     }
-
     #child2 {
         width: 100%;
     }
