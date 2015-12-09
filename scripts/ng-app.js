@@ -9,36 +9,37 @@ app.config(function($routeProvider) {
 
     $routeProvider
     .when('/', {
-        templateUrl: 'main.html',
-        controller: 'MainCtrl',
-    })
-    .when('/cube', {
-        templateUrl: 'cube.html',
-        controller: 'CubeCtrl',
-        resolve:{deps:function($q, $rootScope) {
-            var deferred = $q.defer();
-            var deps1 =
-            [
-                "lib/three.min.js",
-                "lib/Queue.src.js",
-                "lib/bootstrap.min.js"
-            ];
-
-            $script(deps1, function() {
-                    $rootScope.$apply(function() {
-                        deferred.resolve();
-                    });
-            });
-
-            return deferred.promise;
-        }}
-    })
-    .when('/bike', {
         templateUrl: 'bike.html',
         controller: 'MainCtrl',
     })
+//    .when('/cube', {
+//        templateUrl: 'cube.html',
+//        controller: 'CubeCtrl',
+//        resolve:{deps:function($q, $rootScope) {
+//            var deferred = $q.defer();
+//            var deps1 =
+//            [
+//                "lib/three.min.js",
+//                "lib/Queue.src.js",
+//                "lib/bootstrap.min.js"
+//            ];
+//
+//            $script(deps1, function() {
+//                    $rootScope.$apply(function() {
+//                        deferred.resolve();
+//                    });
+//            });
+//
+//            return deferred.promise;
+//        }}
+//    })
+//    .when('/bike', {
+//        templateUrl: 'bike.html',
+//        controller: 'MainCtrl',
+//    })
     .otherwise({
-        redirectTo: '/',
+        templateUrl: 'bike.html',
+        controller: 'MainCtrl',
     });
 })
 
